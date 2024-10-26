@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class MyButton extends StatelessWidget {
-  const MyButton({
+class SettingSection extends StatelessWidget {
+  const SettingSection({
     super.key,
     required this.image,
     required this.title,
     required this.centered,
+    required this.isShareIon,
+    required this.onPressed,
   });
 
   final String image;
   final String title;
   final bool centered;
+  final bool isShareIon;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +30,7 @@ class MyButton extends StatelessWidget {
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 4,
-                        spreadRadius: 4,
-                        offset: Offset(9, 9),
-                      ),
-                    ],
-                    gradient: const LinearGradient(
-                      colors: [
-                        Color(0xffFF5757),
-                        Color(0xffFFBD59),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+                    color: const Color(0xff3E9C8F),
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
@@ -50,39 +39,38 @@ class MyButton extends StatelessWidget {
                 style: TextButton.styleFrom(
                   textStyle: const TextStyle(),
                 ),
-                onPressed: () {},
+                onPressed: onPressed,
                 child: Row(
                   mainAxisAlignment: centered
                       ? MainAxisAlignment.center
                       : MainAxisAlignment.start,
                   children: [
-                    //     const Spacer(flex: 10),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset(
-                        image,
-                        height: screenWidth * 0.08,
-                        width: screenWidth * 0.08,
-                      ),
+                      child: isShareIon
+                          ? const Icon(
+                              Icons.share,
+                              color: Colors.white,
+                            )
+                          : SvgPicture.asset(
+                              image,
+                              height: screenWidth * 0.08,
+                              width: screenWidth * 0.08,
+                            ),
                     ),
-                    // const Spacer(flex: 1),
                     Flexible(
                       child: Text(
                         title,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: screenWidth * 0.04, // Responsive font size
+                          fontSize: screenWidth * 0.04,
                         ),
-                        maxLines: 2, // Allow up to two lines
-                        overflow: TextOverflow
-                            .ellipsis, // Show ellipsis if overflow happens
-                        softWrap: true, // Allow wrapping to the next line
-                        // textAlign:
-                        //   TextAlign.center, // Optional: Center-align the text
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: true,
                       ),
                     ),
-                    // const Spacer(flex: 10),
                   ],
                 ),
               ),

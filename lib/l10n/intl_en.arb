@@ -1,0 +1,18 @@
+{
+    "tutorial_title": "Join the GIVMED community! Save a life, today.",
+    "next_button_child" : "Next",
+    "skip_button_child" : "Skip",
+    "done_button_child" : "Done",
+    "step1" : "Step 1",
+    "step2" : "Step 2",
+    "step3" : "Step 3",
+    "scan_button_child" : "Scan the vertical code",
+    "type_button_child" : "Type the vertical code",
+    "register_medicines" : "Register Your Medicines!",
+    "find_sticker" : "Find the sticker on the medicine box. Scan or type the vertical code.",
+    "scheduled": "SCHEDULED",
+    "completed" : "COMPLETED",
+    "your_donation_reach" : "Your donations that reach the organization in need will appear here!",
+    "your_donation_will" : "Your donations will appear here when you donate your first medicine!",
+    "lang": "english"
+}
