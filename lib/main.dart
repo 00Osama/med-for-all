@@ -1,13 +1,11 @@
 import 'dart:async';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:medforall/bloc/language_cubit.dart';
 import 'package:medforall/generated/l10n.dart';
-import 'widgets/registration.dart';
-import 'auth/login.dart';
+import 'package:medforall/pages/controller.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -50,49 +48,7 @@ class _MyAppState extends State<MyApp> {
                 body: SafeArea(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
-                      return Stack(
-                        children: <Widget>[
-                          const Component2Widget(),
-                          Positioned(
-                            top: constraints.maxHeight * 0.03,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const ImageSliderWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.60,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const BoxWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.57,
-                            left: constraints.maxWidth * 0.34,
-                            child: const LogoWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.69,
-                            left: constraints.maxWidth * 0.31,
-                            child: const AppNameWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.74,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const CommentWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.80,
-                            left: constraints.maxWidth * 0.17,
-                            child: const GetStartedWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.85,
-                            left: constraints.maxWidth * 0.19,
-                            child: const NamesmallWidget(),
-                          ),
-                        ],
-                      );
+                      return const Controller();
                     },
                   ),
                 ),
@@ -113,49 +69,7 @@ class _MyAppState extends State<MyApp> {
                 body: SafeArea(
                   child: LayoutBuilder(
                     builder: (context, constraints) {
-                      return Stack(
-                        children: <Widget>[
-                          const Component2Widget(),
-                          Positioned(
-                            top: constraints.maxHeight * 0.03,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const ImageSliderWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.60,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const BoxWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.57,
-                            left: constraints.maxWidth * 0.34,
-                            child: const LogoWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.69,
-                            left: constraints.maxWidth * 0.31,
-                            child: const AppNameWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.74,
-                            left: constraints.maxWidth * 0.03,
-                            right: constraints.maxWidth * 0.03,
-                            child: const CommentWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.80,
-                            left: constraints.maxWidth * 0.17,
-                            child: const GetStartedWidget(),
-                          ),
-                          Positioned(
-                            top: constraints.maxHeight * 0.85,
-                            left: constraints.maxWidth * 0.19,
-                            child: const NamesmallWidget(),
-                          ),
-                        ],
-                      );
+                      return const Controller();
                     },
                   ),
                 ),
@@ -163,28 +77,6 @@ class _MyAppState extends State<MyApp> {
             );
           }
         },
-      ),
-    );
-  }
-}
-
-class Component2Widget extends StatelessWidget {
-  const Component2Widget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(-0.11, -1.5),
-          end: Alignment(1.85, 0.0),
-          colors: [
-            Color.fromRGBO(255, 87, 87, 1),
-            Color.fromRGBO(255, 189, 89, 1)
-          ],
-        ),
       ),
     );
   }
@@ -334,29 +226,7 @@ class GetStartedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigate to SignUpPage with slide animation from right to left
-        Navigator.push(
-          context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                const RegistrationWidget(),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-              const begin = Offset(1.0, 0.0); // Start from right
-              const end = Offset.zero; // End at center
-              const curve = Curves.easeInOut;
-
-              var tween =
-                  Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-              return SlideTransition(
-                position: animation.drive(tween),
-                child: child,
-              );
-            },
-          ),
-        );
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -383,73 +253,6 @@ class GetStartedWidget extends StatelessWidget {
             fontWeight: FontWeight.normal,
           ),
         ),
-      ),
-    );
-  }
-}
-
-class NamesmallWidget extends StatelessWidget {
-  const NamesmallWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.06,
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.015,
-            left: MediaQuery.of(context).size.width * 0.03,
-            child: Text.rich(
-              TextSpan(
-                text: 'Already have an account? ',
-                style: TextStyle(
-                  color: const Color.fromRGBO(113, 113, 113, 1),
-                  fontFamily: 'Montserrat',
-                  fontSize: MediaQuery.of(context).size.width * 0.035,
-                  fontWeight: FontWeight.normal,
-                ),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'Login in.',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        // Navigate to LoginPage with slide animation from right to left
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    const LoginWidget(),
-                            transitionsBuilder: (context, animation,
-                                secondaryAnimation, child) {
-                              const begin =
-                                  Offset(1.0, 0.0); // Start from right
-                              const end = Offset.zero; // End at center
-                              const curve = Curves.easeInOut;
-
-                              var tween = Tween(begin: begin, end: end)
-                                  .chain(CurveTween(curve: curve));
-                              return SlideTransition(
-                                position: animation.drive(tween),
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
-                      },
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
       ),
     );
   }
